@@ -2,4 +2,9 @@
     <string name="app_name">EventCountDown</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_event">AddEventActivity</string>
+    <string name="event_title">Event Title</string>
+    <string name="event_desc">Event Description</string>
+    <string name="event_date">Event Date</string>
+    <string name="event_time">Event Time</string>
+    <string name="swtich_text">Show Notification</string>
 </resources>
