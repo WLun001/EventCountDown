@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -29,7 +30,10 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        calendar.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, hourOfDay, minute, Calendar.SECOND);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+        String date = dateFormat.format((calendar.getTime()));
         EditText etTime = (EditText) getActivity().findViewById(R.id.event_time);
-        etTime.setText(hourOfDay + ":" + minute);
+        etTime.setText(date);
     }
 }

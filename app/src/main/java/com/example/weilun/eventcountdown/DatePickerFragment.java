@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -32,7 +34,10 @@ public class DatePickerFragment extends android.support.v4.app.DialogFragment
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        calendar.set(year, month, dayOfMonth);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+        String date = dateFormat.format(calendar.getTime());
         EditText etDate = (EditText) getActivity().findViewById((R.id.event_date));
-        etDate.setText(String.format(year + "-" + month + "-" + dayOfMonth));
+        etDate.setText(date);
     }
 }
