@@ -37,5 +37,4 @@ public class AddEventActivity extends AppCompatActivity {
         DialogFragment fragment = new TimePickerFragment();
         fragment.show(getSupportFragmentManager(), "timePicker");
     }
-
 }
