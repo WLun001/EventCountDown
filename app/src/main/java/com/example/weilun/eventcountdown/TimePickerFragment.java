@@ -17,11 +17,12 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
-    static Calendar calendar;
+    private static Calendar calendar;
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        calendar = Calendar.getInstance();
+        if(calendar == null)
+            calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 

@@ -17,7 +17,7 @@ import android.widget.EditText;
 public class DatePickerFragment extends android.support.v4.app.DialogFragment
         implements DatePickerDialog.OnDateSetListener{
 
-    static Calendar calendar = null;
+    private static Calendar calendar = null;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
