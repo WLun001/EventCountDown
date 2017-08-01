@@ -20,6 +20,9 @@ public class EventDBHelper extends SQLiteOpenHelper {
                     EventContract.EventEntry.COLUMN_NAME_DATE + " INTEGER," +
                     EventContract.EventEntry.COLUMN_NAME_NOTIFY + " INTEGER),";
 
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS" + EventContract.EventEntry.TABLE_NAME;
+
     public EventDBHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -30,6 +33,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
     }
 }
