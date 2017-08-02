@@ -7,4 +7,10 @@
     <string name="event_date">Event Date</string>
     <string name="event_time">Event Time</string>
     <string name="swtich_text">Show Notification</string>
+    <string name="day">d</string>
+    <string name="hour">h</string>
+    <string name="minute">m</string>
+    <string name="second">s</string>
+    <string name="left">left</string>
+    <string name="ago">ago</string>
 </resources>
