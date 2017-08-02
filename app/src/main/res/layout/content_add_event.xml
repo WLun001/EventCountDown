@@ -17,6 +17,7 @@
         android:textSize="18sp" />
 
     <EditText
+        android:id="@+id/event_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
@@ -30,6 +31,7 @@
         android:textSize="18sp" />
 
     <EditText
+        android:id="@+id/event_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
@@ -67,6 +69,7 @@
         android:onClick="showTimePickerDialog" />
 
     <Switch
+        android:id="@+id/show_noti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
