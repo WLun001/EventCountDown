@@ -54,6 +54,7 @@ public class EditEventActivity extends AppCompatActivity {
                     event.setDate(new SimpleDateFormat("EEEE, MMMM d, yyyy HH:mm ", Locale.ENGLISH).parse(
                             etDate.getText().toString() + " " + etTime.getText().toString()
                     ));
+                    event.setNotify(aSwitch.isChecked());
 
                     EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
                     if(dbQueries.update(event) != 0){
