@@ -50,6 +50,8 @@ public class ViewEventActivity extends AppCompatActivity {
                     checkBoolean(cursor.getInt(cursor.getColumnIndex(EventContract.EventEntry.COLUMN_NAME_NOTIFY)))
             );
 
+            setTitle(event.getTitle());
+
             tvTitle = (TextView) findViewById(R.id.view_title);
             tvDesc = (TextView) findViewById(R.id.view_description);
             tvDate = (TextView) findViewById(R.id.view_date);
