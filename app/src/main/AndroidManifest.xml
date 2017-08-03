@@ -24,7 +24,10 @@
             android:label="@string/title_activity_add_event"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewEventActivity"></activity>
+        <activity
+            android:name=".ViewEventActivity"
+            android:parentActivityName=".MainActivity"
+            />
     </application>
 
 </manifest>
