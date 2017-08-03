@@ -48,6 +48,7 @@ public class AddEventActivity extends AppCompatActivity {
                     Event event = new Event(0, title, desc, date, isChecked);
                     if(dbQueries.insert(event) != 0){
                         Toast.makeText(AddEventActivity.this, "insert success!", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 } catch (ParseException e) {
                     Toast.makeText(AddEventActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
