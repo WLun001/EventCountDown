@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class ViewEventActivity extends AppCompatActivity {
     private Event event;
-    private TextView tvTitle, tvDesc, tvDate, tvTime;
+    private TextView tvTitle, tvDesc, tvDate, tvTime, tvDay, tvHour, tvMinute, tvSecond, tvTimeLeftAgo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +58,27 @@ public class ViewEventActivity extends AppCompatActivity {
             tvDesc = (TextView) findViewById(R.id.view_description);
             tvDate = (TextView) findViewById(R.id.view_date);
             tvTime = (TextView) findViewById(R.id.view_time);
+            tvDay = (TextView) findViewById(R.id.countdown_day);
+            tvHour = (TextView) findViewById(R.id.countdown_hour);
+            tvMinute = (TextView) findViewById(R.id.countdown_minute);
+            tvSecond = (TextView) findViewById(R.id.countdown_second);
+            tvTimeLeftAgo = (TextView) findViewById(R.id.time_ago_left) ;
 
             tvTitle.setText(event.getTitle());
             tvDesc.setText(event.getDescription());
             tvDate.setText(new SimpleDateFormat ("EEEE, MMMM d, yyyy").format(event.getDate()));
             tvTime.setText(new SimpleDateFormat ("HH:mm").format(event.getDate()));
 
+            Event.Countdown countdown = event.getCountdown();
+            tvDay.setText(Long.toString(countdown.getDays()));
+            tvHour.setText(Long.toString(countdown.getHours()));
+            tvMinute.setText(Long.toString(countdown.getMinutes()));
+            tvSecond.setText(Long.toString(countdown.getSeconds()));
 
+            if(countdown.getDurationInMillis() > 0)
+                tvTimeLeftAgo.setText(getString(R.string.left));
+            else
+                tvTimeLeftAgo.setText(getString(R.string.ago));
     }
 
 }

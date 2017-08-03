@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            tools:text="@string/day" />
+            android:text="@string/day" />
 
         <TextView
             android:id="@+id/countdown_hour"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            tools:text="@string/hour" />
+            android:text="@string/hour" />
 
         <TextView
             android:id="@+id/countdown_minute"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            tools:text="@string/hour" />
+            android:text="@string/minute" />
 
         <TextView
             android:id="@+id/countdown_second"
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            tools:text="@string/second" />
+            android:text="@string/second" />
     </LinearLayout>
 
     <TextView
