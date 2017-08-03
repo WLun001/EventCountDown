@@ -2,21 +2,17 @@ package com.example.weilun.eventcountdown;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class ViewEventActivity extends AppCompatActivity {
     private Event event;
     private TextView tvTitle, tvDesc, tvDate, tvTime, tvDay, tvHour, tvMinute, tvSecond, tvTimeLeftAgo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +41,7 @@ public class ViewEventActivity extends AppCompatActivity {
         String[] selectionArgs = {Long.toString(id)};
 
         Cursor cursor = dbQueries.query(columns, selection, selectionArgs, null, null, null);
-        if(cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             event = new Event(
                     cursor.getLong(cursor.getColumnIndex(EventContract.EventEntry._ID)),
                     cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.COLUMN_NAME_TITLE)),
@@ -62,12 +58,12 @@ public class ViewEventActivity extends AppCompatActivity {
             tvHour = (TextView) findViewById(R.id.countdown_hour);
             tvMinute = (TextView) findViewById(R.id.countdown_minute);
             tvSecond = (TextView) findViewById(R.id.countdown_second);
-            tvTimeLeftAgo = (TextView) findViewById(R.id.time_ago_left) ;
+            tvTimeLeftAgo = (TextView) findViewById(R.id.time_ago_left);
 
             tvTitle.setText(event.getTitle());
             tvDesc.setText(event.getDescription());
-            tvDate.setText(new SimpleDateFormat ("EEEE, MMMM d, yyyy").format(event.getDate()));
-            tvTime.setText(new SimpleDateFormat ("HH:mm").format(event.getDate()));
+            tvDate.setText(new SimpleDateFormat("EEEE, MMMM d, yyyy").format(event.getDate()));
+            tvTime.setText(new SimpleDateFormat("HH:mm").format(event.getDate()));
 
             Event.Countdown countdown = event.getCountdown();
             tvDay.setText(Long.toString(countdown.getDays()));
@@ -75,15 +71,15 @@ public class ViewEventActivity extends AppCompatActivity {
             tvMinute.setText(Long.toString(countdown.getMinutes()));
             tvSecond.setText(Long.toString(countdown.getSeconds()));
 
-            if(countdown.getDurationInMillis() > 0)
+            if (countdown.getDurationInMillis() > 0)
                 tvTimeLeftAgo.setText(getString(R.string.left));
             else
                 tvTimeLeftAgo.setText(getString(R.string.ago));
+        }
+
     }
 
-}
-
-public boolean checkBoolean(int value){
-    return value > 0;
-}
+    public boolean checkBoolean(int value) {
+        return value > 0;
+    }
 }
