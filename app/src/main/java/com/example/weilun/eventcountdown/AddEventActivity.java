@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity {
     private EditText etTitle, etDesc, etTime, etDate;
-    private Switch swtich;
+    private Switch aSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AddEventActivity extends AppCompatActivity {
         etDesc = (EditText) findViewById(R.id.event_desc);
         etTime = (EditText) findViewById(R.id.event_time);
         etDate = (EditText) findViewById(R.id.event_date);
-        swtich = (Switch) findViewById(R.id.show_noti);
+        aSwitch = (Switch) findViewById(R.id.show_noti);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class AddEventActivity extends AppCompatActivity {
                     String desc = etDesc.getText().toString();
                     SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d, yyyy HH:mm", Locale.ENGLISH);
                     Date date = dateFormat.parse(etDate.getText().toString() + " " + etTime.getText().toString());
-                    Boolean isChecked = swtich.isChecked();
+                    Boolean isChecked = aSwitch.isChecked();
 
                     EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
                     Event event = new Event(0, title, desc, date, isChecked);
@@ -56,7 +56,6 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
     }
-
     public void showDatePickerDialog(View view) {
         DialogFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "datePicker");

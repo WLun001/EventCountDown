@@ -38,4 +38,18 @@ public class EventDBQueries {
         event.setId(id);
         return id;
     }
+
+    public int update(Event event){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(EventContract.EventEntry.COLUMN_NAME_TITLE, event.getTitle());
+        values.put(EventContract.EventEntry.COLUMN_NAME_DESCRIPTION, event.getDescription());
+        values.put(EventContract.EventEntry.COLUMN_NAME_DATE,event.getDateAsCalendar().getTimeInMillis());
+        values.put(EventContract.EventEntry.COLUMN_NAME_NOTIFY, event.isNotify());
+
+        String selection = EventContract.EventEntry._ID + " = ?";
+        String[] selectionArgs = {Long.toString(event.getId())};
+
+        return db.update(EventContract.EventEntry.TABLE_NAME, values, selection, selectionArgs);
+    }
 }

@@ -87,7 +87,7 @@ public class ViewEventActivity extends AppCompatActivity {
             tvTitle.setText(event.getTitle());
             tvDesc.setText(event.getDescription());
             tvDate.setText(new SimpleDateFormat("EEEE, MMMM d, yyyy").format(event.getDate()));
-            tvTime.setText(new SimpleDateFormat("HH:mm").format(event.getDate()));
+            tvTime.setText(new SimpleDateFormat("hh:mm a").format(event.getDate()));
 
             Event.Countdown countdown = event.getCountdown();
             tvDay.setText(Long.toString(countdown.getDays()));
