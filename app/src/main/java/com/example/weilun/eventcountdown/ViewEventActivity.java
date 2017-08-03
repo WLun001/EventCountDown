@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ViewEventActivity extends AppCompatActivity {
+    public static final String EXTRA_EVENT = "com.example.weilun.eventcountdown.EVENT";
     private Event event;
     private TextView tvTitle, tvDesc, tvDate, tvTime, tvDay, tvHour, tvMinute, tvSecond, tvTimeLeftAgo;
 
@@ -18,6 +21,25 @@ public class ViewEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_edit){
+            Intent intent = new Intent(getApplicationContext(), EditEventActivity.class);
+            intent.putExtra(EXTRA_EVENT, event);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

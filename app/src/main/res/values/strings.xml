@@ -13,4 +13,5 @@
     <string name="second">s</string>
     <string name="left">left</string>
     <string name="ago">ago</string>
+    <string name="title_activity_edit_event">EditEventActivity</string>
 </resources>
