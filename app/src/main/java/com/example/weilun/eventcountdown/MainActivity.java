@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "hello" + position, Toast.LENGTH_SHORT).show();
+                Cursor cursor = (Cursor)parent.getItemAtPosition(position);
+                Intent intent = new Intent(MainActivity.this, ViewEventActivity.class);
+                intent.putExtra(EXTRA_ID, cursor.getLong(cursor.getColumnIndex(EventContract.EventEntry._ID)));
+                startActivity(intent);
             }
         });
     }
