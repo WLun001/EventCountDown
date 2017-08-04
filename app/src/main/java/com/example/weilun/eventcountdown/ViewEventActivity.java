@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class ViewEventActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_view, menu);
         return true;
     }
 
@@ -33,11 +34,22 @@ public class ViewEventActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.action_edit){
-            Intent intent = new Intent(getApplicationContext(), EditEventActivity.class);
-            intent.putExtra(EXTRA_EVENT, event);
-            startActivity(intent);
-            return true;
+        switch(id) {
+
+            case R.id.action_edit:{
+                Intent intent = new Intent(getApplicationContext(), EditEventActivity.class);
+                intent.putExtra(EXTRA_EVENT, event);
+                startActivity(intent);
+                return true;
+            }
+
+            case R.id.action_delete:{
+                EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
+                dbQueries.deleteOne(event.getId());
+                Toast.makeText(this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
+                finish();
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -100,7 +112,6 @@ public class ViewEventActivity extends AppCompatActivity {
             else
                 tvTimeLeftAgo.setText(getString(R.string.ago));
         }
-
     }
 
     public boolean checkBoolean(int value) {

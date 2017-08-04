@@ -58,7 +58,7 @@ public class EditEventActivity extends AppCompatActivity {
 
                     EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
                     if(dbQueries.update(event) != 0){
-                        Toast.makeText(EditEventActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditEventActivity.this, getString(R.string.update_success), Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 } catch (ParseException e) {

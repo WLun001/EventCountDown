@@ -52,4 +52,17 @@ public class EventDBQueries {
 
         return db.update(EventContract.EventEntry.TABLE_NAME, values, selection, selectionArgs);
     }
+
+    public void deleteOne(Long id){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String selection = EventContract.EventEntry._ID + " = ?";
+        String[] selectionArgs = {Long.toString(id)};
+
+        db.delete(EventContract.EventEntry.TABLE_NAME, selection, selectionArgs);
+    }
+
+    public void deleteAll(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.delete(EventContract.EventEntry.TABLE_NAME, null, null);
+    }
 }

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">EventCountDown</string>
     <string name="action_settings">Settings</string>
+    <string name="action_add">Add</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_delete_all">Delete All</string>
     <string name="title_activity_add_event">AddEventActivity</string>
     <string name="event_title">Event Title</string>
     <string name="event_desc">Event Description</string>
@@ -14,4 +17,7 @@
     <string name="left">left</string>
     <string name="ago">ago</string>
     <string name="title_activity_edit_event">EditEventActivity</string>
+    <string name="delete_success">Deleted</string>
+    <string name="update_success">Updated</string>
+    <string name="insert_success">Inserted</string>
 </resources>
