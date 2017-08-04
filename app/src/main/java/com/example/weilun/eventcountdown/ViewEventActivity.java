@@ -34,16 +34,16 @@ public class ViewEventActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id) {
+        switch (id) {
 
-            case R.id.action_edit:{
+            case R.id.action_edit: {
                 Intent intent = new Intent(getApplicationContext(), EditEventActivity.class);
                 intent.putExtra(EXTRA_EVENT, event);
                 startActivity(intent);
                 return true;
             }
 
-            case R.id.action_delete:{
+            case R.id.action_delete: {
                 EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
                 dbQueries.deleteOne(event.getId());
                 Toast.makeText(this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();

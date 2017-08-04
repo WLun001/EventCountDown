@@ -9,6 +9,6 @@
     tools:context="com.example.weilun.eventcountdown.AddEventActivity"
     tools:showIn="@layout/activity_add_event">
 
-   <include layout="@layout/event_form" />
+    <include layout="@layout/event_form" />
 
 </LinearLayout>

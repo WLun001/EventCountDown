@@ -2,6 +2,7 @@ package com.example.weilun.eventcountdown;
 /**
  * Created by Wei Lun on 8/1/2017.
  */
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -36,16 +37,33 @@ public class Event implements java.io.Serializable {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Date getDate() {
         return date;
+    }
+
+    public void setDate(Calendar calendar) {
+        calendar.set(Calendar.MILLISECOND, 0);
+        this.date = new Date(calendar.getTimeInMillis());
     }
 
     public Calendar getDateAsCalendar() {
@@ -58,25 +76,12 @@ public class Event implements java.io.Serializable {
         return notify;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNotify(boolean notify) {
+        this.notify = notify;
     }
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public void setDate(Calendar calendar) {
-        calendar.set(Calendar.MILLISECOND, 0);
-        this.date = new Date(calendar.getTimeInMillis());
     }
 
     public Countdown getCountdown() {
@@ -95,10 +100,6 @@ public class Event implements java.io.Serializable {
         return countdown;
     }
 
-    public void setNotify(boolean notify) {
-        this.notify = notify;
-    }
-
     public class Countdown {
         private long durationInMillis;
         private long days;
@@ -106,10 +107,24 @@ public class Event implements java.io.Serializable {
         private long minutes;
         private long seconds;
 
-        public long getDurationInMillis() {return durationInMillis;}
-        public long getDays() {return Math.abs(days);}
-        public long getHours() {return Math.abs(hours);}
-        public long getMinutes() {return Math.abs(minutes);}
-        public long getSeconds() {return Math.abs(seconds);}
+        public long getDurationInMillis() {
+            return durationInMillis;
+        }
+
+        public long getDays() {
+            return Math.abs(days);
+        }
+
+        public long getHours() {
+            return Math.abs(hours);
+        }
+
+        public long getMinutes() {
+            return Math.abs(minutes);
+        }
+
+        public long getSeconds() {
+            return Math.abs(seconds);
+        }
     }
 }

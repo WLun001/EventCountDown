@@ -46,7 +46,7 @@ public class AddEventActivity extends AppCompatActivity {
 
                     EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
                     Event event = new Event(0, title, desc, date, isChecked);
-                    if(dbQueries.insert(event) != 0){
+                    if (dbQueries.insert(event) != 0) {
                         Toast.makeText(AddEventActivity.this, getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -56,6 +56,7 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
     }
+
     public void showDatePickerDialog(View view) {
         DialogFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "datePicker");

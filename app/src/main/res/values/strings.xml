@@ -20,4 +20,8 @@
     <string name="delete_success">Deleted</string>
     <string name="update_success">Updated</string>
     <string name="insert_success">Inserted</string>
+    <string name="dialog_message">Delete all Events?</string>
+    <string name="dialog_title">Delete</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

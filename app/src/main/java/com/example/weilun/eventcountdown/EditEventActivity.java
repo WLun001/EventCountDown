@@ -57,7 +57,7 @@ public class EditEventActivity extends AppCompatActivity {
                     event.setNotify(aSwitch.isChecked());
 
                     EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
-                    if(dbQueries.update(event) != 0){
+                    if (dbQueries.update(event) != 0) {
                         Toast.makeText(EditEventActivity.this, getString(R.string.update_success), Toast.LENGTH_SHORT).show();
                         finish();
                     }

@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_ID = "com.example.weilun.eventcountdown.ID";
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Cursor cursor = (Cursor)parent.getItemAtPosition(position);
+                Cursor cursor = (Cursor) parent.getItemAtPosition(position);
                 Intent intent = new Intent(MainActivity.this, ViewEventActivity.class);
                 intent.putExtra(EXTRA_ID, cursor.getLong(cursor.getColumnIndex(EventContract.EventEntry._ID)));
                 startActivity(intent);
@@ -64,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_all) {
-            EventDBQueries dbQueries = new EventDBQueries(new EventDBHelper(getApplicationContext()));
-            dbQueries.deleteAll();
-            Toast.makeText(this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
-            onResume();
+            comfirmDeleteAll();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         EventDBQueries dbQuery = new EventDBQueries(new EventDBHelper(getApplicationContext()));
-        String [] columns = {
+        String[] columns = {
                 EventContract.EventEntry._ID,
                 EventContract.EventEntry.COLUMN_NAME_TITLE,
                 EventContract.EventEntry.COLUMN_NAME_DATE
@@ -86,5 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 , EventContract.EventEntry.COLUMN_NAME_DATE + " ASC");
         EventCursorAdapter adapter = new EventCursorAdapter(this, cursor, 0);
         listView.setAdapter(adapter);
+    }
+
+    public void comfirmDeleteAll() {
+        DialogFragment fragment = new DeleteDialogFragment();
+        fragment.show(getSupportFragmentManager(), "deleteDialog");
     }
 }

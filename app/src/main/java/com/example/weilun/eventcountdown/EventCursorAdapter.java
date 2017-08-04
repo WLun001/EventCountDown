@@ -17,10 +17,11 @@ import java.text.SimpleDateFormat;
 public class EventCursorAdapter extends CursorAdapter {
     private LayoutInflater inflater;
 
-    public EventCursorAdapter(Context context, Cursor c, int flags){
+    public EventCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return inflater.inflate(R.layout.list_item, parent, false);
