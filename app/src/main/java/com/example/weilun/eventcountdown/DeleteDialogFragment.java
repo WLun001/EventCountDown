@@ -26,7 +26,13 @@ public class DeleteDialogFragment extends DialogFragment {
                         Toast.makeText(getActivity(), R.string.delete_success, Toast.LENGTH_SHORT).show();
                         ((MainActivity) getActivity()).onResume();
                     }
-                });
+                })
+        .setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
         return builder.create();
     }
 }
